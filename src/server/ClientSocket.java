@@ -71,7 +71,21 @@ public class ClientSocket extends Thread{
 		}
 		
 		
+		
 		onlineUsers.removeElement(this);
+		Datagram groupData = sh.handleGetGroup(null);
+		for (ClientSocket socket : onlineUsers) {
+
+			socket.senddatagram(groupData);
+
+		}
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	public  void senddatagram(Datagram data){
@@ -83,4 +97,11 @@ public class ClientSocket extends Thread{
 			this.server.setText("client :  "+port+"sendData fail");
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
 }
